@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enciclopedia Definitiva EBAU: Física (Casos y Ejercicios)</title>
+    
+    <!-- Configuración e inclusión de MathJax para renderizado LaTeX -->
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$$', '$$']],
+                displayMath: [['$$$', '$$$']]
+            },
+            svg: { fontCache: 'global' }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+    <style>
+        :root {
+            --primary: #0F2027;
+            --secondary: #203A43;
+            --tertiary: #2C5364;
+            --accent: #FF4B2B;
+            --accent-light: #FF416C;
+            --success: #00b09b;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --text-dark: #2c3e50;
+            --ex-bg: #eef2f3;
+            --ex-border: #bdc3c7;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            margin: 0;
+            padding: 0;
+            line-height: 1.7;
+        }
+
+        header {
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--tertiary));
+            color: var(--white);
+            padding: 50px 20px;
+            text-align: center;
+            border-bottom: 6px solid var(--accent);
+        }
+
+        header h1 {
+            font-size: 3.5em;
+            margin: 0 0 10px 0;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        header p {
+            font-size: 1.3em;
+            opacity: 0.9;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            background: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            flex-wrap: wrap;
+        }
+
+        .tab-btn {
+            background: none;
+            border: none;
+            padding: 20px 30px;
+            font-size: 1.2em;
+            font-weight: 700;
+            color: var(--secondary);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border-bottom: 4px solid transparent;
+        }
+
+        .tab-btn:hover {
+            color: var(--accent);
+            background: #fdfdfd;
+        }
+
+        .tab-btn.active {
+            color: var(--accent);
+            border-bottom: 4px solid var(--accent);
+            background: #fffafa;
+        }
+
+        .tab-content {
+            display: none;
+            max-width: 1400px;
+            margin: 40px auto;
+            padding: 0 20px;
+            animation: fadeIn 0.6s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Bloque de Fórmulas */
+        .formula-section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            border: 2px solid #e0e0e0;
+        }
+
+        .formula-section h2 {
+            text-align: center;
+            color: var(--tertiary);
+            font-size: 2.5em;
+            margin-top: 0;
+            margin-bottom: 30px;
+            border-bottom: 3px dashed #ccc;
+            padding-bottom: 15px;
+        }
+
+        .formula-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+        }
+
+        .formula-box {
+            background: #f8f9fa;
+            border-left: 6px solid var(--tertiary);
+            padding: 20px;
+            border-radius: 6px;
+        }
+
+        .formula-box h4 {
+            margin: 0 0 15px 0;
+            color: var(--tertiary);
+            font-size: 1.2em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .math-expr {
+            font-size: 1.3em;
+            text-align: center;
+            overflow-x: auto;
+            color: #b71540;
+            font-weight: bold;
+        }
+
+        /* Bloque de Casos teóricos */
+        .case-section h2 {
+            font-size: 2.8em;
+            color: var(--primary);
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .case-section h2::before {
+            content: "📚";
+            margin-right: 15px;
+        }
+
+        .case-card {
+            background: var(--white);
+            border-radius: 15px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 8px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--accent-light));
+        }
+
+        .quote-title {
+            font-size: 1.6em;
+            color: var(--text-dark);
+            font-weight: bold;
+            font-style: italic;
+            background: #ffeaa7;
+            background: linear-gradient(to right, #ffeaa7, #fab1a0);
+            padding: 20px 30px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+            border-left: 5px solid #d63031;
+        }
+
+        .ebau-badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .ebau-badge {
+            background: var(--tertiary);
+            color: var(--white);
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-weight: bold;
+            font-size: 1.1em;
+            display: flex;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .ebau-badge::before {
+            content: "🎯";
+            margin-right: 8px;
+        }
+
+        .resolution-steps {
+            list-style: none;
+            counter-reset: my-counter;
+            padding-left: 0;
+        }
+
+        .resolution-steps li {
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 25px;
+            font-size: 1.2em;
+        }
+
+        .resolution-steps li::before {
+            content: counter(my-counter);
+            counter-increment: my-counter;
+            position: absolute;
+            left: 0;
+            top: -2px;
+            width: 40px;
+            height: 40px;
+            background: var(--tertiary);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2em;
+        }
+
+        .warning {
+            background: #fff3cd;
+            color: #856404;
+            padding: 15px;
+            border-left: 5px solid #ffeeba;
+            margin: 15px 0;
+            font-weight: bold;
+            border-radius: 4px;
+        }
+
+        /* SECCIÓN DE EJERCICIOS RESUELTOS AL FINAL DE CADA PESTAÑA */
+        .exercises-section {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 5px solid var(--tertiary);
+        }
+
+        .exercises-section h2 {
+            font-size: 2.8em;
+            color: var(--tertiary);
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .exercise-box {
+            background: var(--ex-bg);
+            border: 1px solid var(--ex-border);
+            border-radius: 10px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .ex-title {
+            font-size: 1.5em;
+            color: var(--white);
+            background: var(--tertiary);
+            padding: 10px 20px;
+            border-radius: 6px;
+            display: inline-block;
+            margin-bottom: 20px;
+            font-weight: bold;
+        }
+
+        .ex-statement {
+            font-size: 1.2em;
+            font-style: italic;
+            border-left: 4px solid var(--secondary);
+            padding-left: 20px;
+            margin-bottom: 25px;
+            color: #34495e;
+            background: #ffffff;
+            padding: 15px 20px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .ex-resolution {
+            font-size: 1.15em;
+            background: #ffffff;
+            padding: 25px;
+            border-radius: 8px;
+            border: 1px solid #e0e0e0;
+        }
+
+        .ex-resolution h5 {
+            color: var(--accent);
+            font-size: 1.3em;
+            margin-top: 0;
+            border-bottom: 2px solid var(--accent);
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Física PAU: Todo Incluido</h1>
+    <p>La web definitiva sin restricciones. Fórmulas, Casos de Examen Estructurados y sus Ejercicios Prácticos Resueltos paso a paso extraídos de modelos reales EBAU.</p>
+</header>
+
+<div class="tab-nav">
+    <button class="tab-btn active" onclick="openTab(event, 'Gravitacion')">1. Campo Gravitatorio</button>
+    <button class="tab-btn" onclick="openTab(event, 'Electrico')">2. Campo Eléctrico</button>
+    <button class="tab-btn" onclick="openTab(event, 'Magnetico')">3. Campo Magnético e Inducción</button>
+    <button class="tab-btn" onclick="openTab(event, 'Optica')">4. Óptica</button>
+    <button class="tab-btn" onclick="openTab(event, 'Moderna')">5. Física Moderna</button>
+</div>
+
+<!-- ========================================== -->
+<!-- PESTAÑA 1: CAMPO GRAVITATORIO              -->
+<!-- ========================================== -->
+<div id="Gravitacion" class="tab-content" style="display: block;">
+    
+    <div class="formula-section">
+        <h2>Recetario de Fórmulas: Campo Gravitatorio</h2>
+        <div class="formula-grid">
+            <div class="formula-box">
+                <h4>Fuerza Gravitatoria (Ley de Newton)</h4>
+                <div class="math-expr">$$ \vec{F} = -G \frac{M \cdot m}{r^2} \vec{u}_r $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Intensidad del Campo Gravitatorio</h4>
+                <div class="math-expr">$$ \vec{g} = -G \frac{M}{r^2} \vec{u}_r $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Energía Potencial Gravitatoria</h4>
+                <div class="math-expr">$$ E_p = -G \frac{M \cdot m}{r} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Potencial Gravitatorio</h4>
+                <div class="math-expr">$$ V = -G \frac{M}{r} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Trabajo del Campo Gravitatorio</h4>
+                <div class="math-expr">$$ W_{A \to B} = -\Delta E_p = -m(V_B - V_A) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Dinámica de Órbitas Circulares ($F_g = F_c$)</h4>
+                <div class="math-expr">$$ G \frac{M \cdot m}{r^2} = m \frac{v^2}{r} \implies v = \sqrt{\frac{G \cdot M}{r}} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Tercera Ley de Kepler</h4>
+                <div class="math-expr">$$ T^2 = \frac{4\pi^2}{G \cdot M} r^3 $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Energías en Órbita Circular Estable</h4>
+                <div class="math-expr">$$ E_m = -E_c = \frac{E_p}{2} = -G \frac{M \cdot m}{2r} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Velocidad de Escape</h4>
+                <div class="math-expr">$$ v_e = \sqrt{\frac{2 \cdot G \cdot M}{R}} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Momento Angular (Módulo)</h4>
+                <div class="math-expr">$$ |\vec{L}| = |\vec{r}| \cdot m \cdot |\vec{v}| \cdot \sin(\alpha) $$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-section">
+        <h2>Casos Teóricos y Modelos de Resolución</h2>
+
+        <!-- Caso 1 -->
+        <div class="case-card">
+            <div class="quote-title">"Un satélite de masa m describe una órbita circular alrededor de la Tierra/Planeta a una altura h (o con un periodo T). Determine su velocidad, periodo o la masa del planeta..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Órbitas Circulares (Dinámica y Cinemática)</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>El paso clave e insalvable:</strong> Jamás uses la fórmula de la velocidad o de Kepler directamente de memoria. El tribunal de la EBAU te exige demostrar que conoces la dinámica del movimiento. Debes escribir: <em>"Dado que el satélite describe una órbita circular estable, la fuerza gravitatoria actúa como fuerza centrípeta."</em>
+                <br>$$ F_g = F_c \implies G\frac{M \cdot m}{r^2} = m\frac{v^2}{r} $$
+                </li>
+                <li><strong>Despejar la velocidad orbital:</strong> Cancelando la masa del satélite $m$ y una $r$, obtenemos $$ v = \sqrt{\frac{G \cdot M}{r}} $$.
+                <div class="warning">¡Cuidado! La variable $r$ en estas fórmulas es la distancia desde el centro del planeta. Si el enunciado te da la <strong>altura $h$</strong>, debes calcular primero $$ r = R_{planeta} + h $$.</div>
+                </li>
+                <li><strong>Introducir el Periodo ($T$):</strong> Como el movimiento es circular uniforme, $$ v = \frac{2\pi r}{T} $$. Sustituyendo y elevando al cuadrado llegas a $$ T^2 = \frac{4\pi^2}{G \cdot M}r^3 $$.</li>
+            </ul>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="case-card">
+            <div class="quote-title">"Un planeta/cometa describe una órbita elíptica. En su afelio (o apogeo) dista R_a y tiene velocidad V_a. Calcule su velocidad en el perihelio (o perigeo)..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Leyes de Kepler y Conservación en Elipses</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>El principio físico fundamental:</strong> La fuerza gravitatoria es una <strong>fuerza central</strong> ($M = \vec{r} \times \vec{F} = 0$). Por tanto, <strong>se conserva el momento angular</strong> ($\vec{L} = cte$).</li>
+                <li><strong>Aplicación a los puntos extremos:</strong> En afelio y perihelio, el vector posición y el vector velocidad son exactamente perpendiculares ($\sin 90^\circ = 1$).
+                <br>$$ |\vec{L}_a| = |\vec{L}_p| \implies m \cdot r_a \cdot v_a = m \cdot r_p \cdot v_p \implies r_a \cdot v_a = r_p \cdot v_p $$
+                </li>
+                <li><strong>Conservación de Energía:</strong> Además, la Energía Mecánica se conserva. Se puede montar un sistema: $$ -\frac{G \cdot M \cdot m}{r_a} + \frac{1}{2}m v_a^2 = -\frac{G \cdot M \cdot m}{r_p} + \frac{1}{2}m v_p^2 $$</li>
+            </ul>
+        </div>
+
+        <!-- Caso 3 -->
+        <div class="case-card">
+            <div class="quote-title">"Un cohete se lanza desde la superficie terrestre para ponerlo en una órbita circular (o para escapar del planeta). ¿Qué energía adicional suministra el motor? / Calcule la velocidad de escape..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Balance Energético y Escapes</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Concepto de Trabajo Externo:</strong> El trabajo de los motores es la variación de la Energía Mecánica Total: $$ W_{motores} = \Delta E_m = E_{m(final)} - E_{m(inicial)} $$</li>
+                <li><strong>Puesta en órbita:</strong> Estado Inicial (suelo, reposo): $E_{m(ini)} = -G\frac{M \cdot m}{R_{planeta}}$. Estado Final (órbita de radio r): $E_{m(fin)} = -G\frac{M \cdot m}{2r}$. Restamos asegurando que el resultado sea positivo.</li>
+                <li><strong>Velocidad de Escape:</strong> Condición de escape es llegar al infinito con velocidad cero ($E_{m(\infty)} = 0$).
+                <br>$$ \frac{1}{2}m v_e^2 - G\frac{M \cdot m}{R} = 0 \implies v_e = \sqrt{\frac{2 \cdot G \cdot M}{R}} $$
+                </li>
+            </ul>
+        </div>
+
+        <!-- Caso 4 -->
+        <div class="case-card">
+            <div class="quote-title">"Dos masas puntuales m1 y m2 se sitúan en coordenadas (x,y). Calcule el vector campo gravitatorio resultante en un punto P, o el punto donde el campo se anula, o el trabajo para mover una tercera masa..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Superposición de Campos y Potenciales</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Campo Vectorial:</strong> Dibuja vectores apuntando HACIA las masas. Calcula módulos $g = G\frac{M}{d^2}$. Descompón usando trigonometría ($\cos \alpha, \sin \alpha$) y asigna signos $\vec{i}, \vec{j}$ viendo el dibujo. Suma las componentes.</li>
+                <li><strong>Punto de Campo Nulo:</strong> Iguala módulos $G\frac{M_1}{x^2} = G\frac{M_2}{(D-x)^2}$. ¡Aplica raíz cuadrada a ambos lados para evitar ecuaciones de 2º grado!</li>
+                <li><strong>Trabajo de mover una masa m':</strong> Calcula $V_A$ y $V_B$ sumando los escalares $V = -G\frac{M}{r}$. Luego: $$ W_{campo} = -m'(V_B - V_A) $$</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE EJERCICIOS GRAVITACIÓN -->
+    <div class="exercises-section">
+        <h2>Ejercicios Resueltos de Aplicación (Gravitación)</h2>
+
+        <!-- Ejercicios Caso 1 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 1 (Caso 1) - Satélites y Cinemática Orbital</div>
+            <div class="ex-statement">
+                "Un satélite de 500 kg de masa describe una órbita circular alrededor de un planeta esférico de masa $M = 4 \cdot 10^{24}$ kg y radio $R = 6 \cdot 10^6$ m. Si el satélite se encuentra a una altura $h = 2 \cdot 10^6$ m sobre la superficie del planeta, calcule: a) La velocidad orbital del satélite. b) Su periodo de revolución."<br>
+                <i>Dato: $G = 6,67 \cdot 10^{-11} \text{ N m}^2 \text{ kg}^{-2}$</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p><b>Apartado a:</b> Primero, determinamos el radio total de la órbita midiendo desde el centro del planeta:</p>
+                <p>$$ r = R + h = 6 \cdot 10^6 + 2 \cdot 10^6 = 8 \cdot 10^6 \text{ m} $$</p>
+                <p>Igualamos la fuerza gravitatoria a la fuerza centrípeta, ya que es la única fuerza que actúa y le obliga a describir el MCU:</p>
+                <p>$$ F_g = F_c \implies G\frac{M \cdot m}{r^2} = m\frac{v^2}{r} \implies v = \sqrt{\frac{G \cdot M}{r}} $$</p>
+                <p>Sustituyendo valores:</p>
+                <p>$$ v = \sqrt{\frac{6,67 \cdot 10^{-11} \cdot 4 \cdot 10^{24}}{8 \cdot 10^6}} = \sqrt{33350000} = 5774,9 \text{ m/s} $$</p>
+                <p><b>Apartado b:</b> Como el movimiento es circular uniforme, la velocidad es constante. Sustituimos en la ecuación cinemática:</p>
+                <p>$$ v = \frac{2\pi r}{T} \implies T = \frac{2\pi r}{v} = \frac{2\pi \cdot 8 \cdot 10^6}{5774,9} = 8704,6 \text{ s} \approx 2,42 \text{ horas} $$</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 2 (Caso 1) - Balance Energético Orbital</div>
+            <div class="ex-statement">
+                "Considere el mismo satélite de 500 kg del ejercicio anterior en su órbita de radio $8 \cdot 10^6$ m alrededor del planeta. Calcule la energía cinética, la energía potencial y la energía mecánica total del satélite en dicha órbita."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Calculamos la energía potencial gravitatoria (siempre negativa):</p>
+                <p>$$ E_p = -G\frac{M \cdot m}{r} = -6,67 \cdot 10^{-11} \frac{4 \cdot 10^{24} \cdot 500}{8 \cdot 10^6} = -1,667 \cdot 10^{10} \text{ J} $$</p>
+                <p>Para la energía cinética, aprovechamos que $v = 5774,9$ m/s, o usamos la relación teórica para órbitas circulares ($E_c = |E_p|/2$):</p>
+                <p>$$ E_c = \frac{1}{2}mv^2 = \frac{1}{2} \cdot 500 \cdot (5774,9)^2 = 8,337 \cdot 10^9 \text{ J} $$</p>
+                <p>La energía mecánica total es la suma de ambas:</p>
+                <p>$$ E_m = E_c + E_p = 8,337 \cdot 10^9 - 1,667 \cdot 10^{10} = -8,33 \cdot 10^9 \text{ J} $$</p>
+                <p>Como se comprueba, se cumple la relación teórica perfecta para órbitas circulares: $E_m = -E_c = \frac{E_p}{2}$.</p>
+            </div>
+        </div>
+
+        <!-- Ejercicios Caso 2 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 3 (Caso 2) - Órbitas Elípticas y Momento Angular</div>
+            <div class="ex-statement">
+                "El cometa Halley orbita alrededor del Sol en una trayectoria elíptica. En su perihelio (punto más cercano) se encuentra a $8,8 \cdot 10^{10}$ m del Sol y viaja a una velocidad de $5,4 \cdot 10^4$ m/s. Sabiendo que en su afelio (punto más lejano) se encuentra a $5,3 \cdot 10^{12}$ m del Sol, determine la velocidad del cometa en el afelio."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>La fuerza gravitatoria ejercida por el Sol es una fuerza central, cuya línea de acción pasa siempre por el foco de la elipse. Esto implica que el momento de las fuerzas es cero y, por tanto, el momento angular orbital del cometa ($\vec{L}$) permanece constante en todo el recorrido.</p>
+                <p>En el afelio y el perihelio, el vector de posición y el vector velocidad forman un ángulo de 90º. Igualando los módulos del momento angular en ambos extremos:</p>
+                <p>$$ |\vec{L}_{perihelio}| = |\vec{L}_{afelio}| \implies m \cdot r_p \cdot v_p \cdot \sin(90^\circ) = m \cdot r_a \cdot v_a \cdot \sin(90^\circ) $$</p>
+                <p>La masa del cometa ($m$) se cancela:</p>
+                <p>$$ r_p \cdot v_p = r_a \cdot v_a $$</p>
+                <p>Despejamos la velocidad en el afelio ($v_a$):</p>
+                <p>$$ v_a = \frac{r_p \cdot v_p}{r_a} = \frac{8,8 \cdot 10^{10} \cdot 5,4 \cdot 10^4}{5,3 \cdot 10^{12}} = 896,6 \text{ m/s} $$</p>
+                <p>Físicamente comprobamos que es correcto, ya que en el punto más alejado el cometa debe moverse mucho más lento.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 4 (Caso 2) - Energía en la Elipse</div>
+            <div class="ex-statement">
+                "Un asteroide de masa $m = 1000$ kg describe una órbita elíptica alrededor de una estrella de masa $M = 2 \cdot 10^{30}$ kg. Si en el perihelio ($r_p = 1,5 \cdot 10^{11}$ m) su velocidad es de $3 \cdot 10^4$ m/s, calcule la energía mecánica del asteroide. ¿Depende esta energía de la posición del asteroide en la órbita?"<br>
+                <i>Dato: $G = 6,67 \cdot 10^{-11} \text{ N m}^2 \text{ kg}^{-2}$</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Como la fuerza gravitatoria es una fuerza conservativa, la Energía Mecánica Total del sistema se conserva en cualquier punto de la órbita elíptica. Por tanto, podemos calcularla en el perihelio y ese valor será constante en toda la trayectoria.</p>
+                <p>$$ E_m = E_{c(p)} + E_{p(p)} = \frac{1}{2}m v_p^2 - G\frac{M \cdot m}{r_p} $$</p>
+                <p>Sustituimos los datos:</p>
+                <p>$$ E_c = \frac{1}{2} (1000) (3 \cdot 10^4)^2 = 4,5 \cdot 10^{11} \text{ J} $$</p>
+                <p>$$ E_p = -6,67 \cdot 10^{-11} \frac{2 \cdot 10^{30} \cdot 1000}{1,5 \cdot 10^{11}} = -8,89 \cdot 10^{11} \text{ J} $$</p>
+                <p>$$ E_m = 4,5 \cdot 10^{11} - 8,89 \cdot 10^{11} = -4,39 \cdot 10^{11} \text{ J} $$</p>
+                <p>La energía mecánica es constante e independiente del punto de la órbita. Su valor negativo garantiza que es una órbita cerrada (ligada).</p>
+            </div>
+        </div>
+
+        <!-- Ejercicios Caso 3 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 5 (Caso 3) - Energía de Lanzamiento y Órbita</div>
+            <div class="ex-statement">
+                "Se desea poner en órbita circular a una altura de $1000$ km sobre la superficie terrestre un satélite de 200 kg. Calcule la energía total que deben suministrar los propulsores desde el momento del despegue en la superficie terrestre hasta quedar establecido en su órbita."<br>
+                <i>Datos: $G = 6,67 \cdot 10^{-11}$, $M_T = 5,98 \cdot 10^{24}$ kg, $R_T = 6370$ km. Desprecie la energía cinética inicial debida a la rotación de la Tierra.</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>El trabajo aportado por los motores es igual a la variación de la energía mecánica total del sistema.</p>
+                <p><b>1. Estado inicial (superficie):</b> Parte del reposo, luego solo tiene energía potencial a una distancia $R_T = 6,37 \cdot 10^6$ m.</p>
+                <p>$$ E_{m(ini)} = -G\frac{M_T \cdot m}{R_T} = -6,67 \cdot 10^{-11} \frac{5,98 \cdot 10^{24} \cdot 200}{6,37 \cdot 10^6} = -1,25 \cdot 10^{10} \text{ J} $$</p>
+                <p><b>2. Estado final (órbita):</b> El radio de la órbita es $r = R_T + h = 6,37 \cdot 10^6 + 1 \cdot 10^6 = 7,37 \cdot 10^6$ m. En la órbita estable, tiene energía cinética y potencial. Su energía mecánica es $E_m = \frac{1}{2} E_p$.</p>
+                <p>$$ E_{m(fin)} = -G\frac{M_T \cdot m}{2r} = -6,67 \cdot 10^{-11} \frac{5,98 \cdot 10^{24} \cdot 200}{2 \cdot 7,37 \cdot 10^6} = -5,41 \cdot 10^9 \text{ J} $$</p>
+                <p><b>3. Trabajo del motor:</b></p>
+                <p>$$ W = \Delta E_m = E_{m(fin)} - E_{m(ini)} = -5,41 \cdot 10^9 - (-1,25 \cdot 10^{10}) = 7,09 \cdot 10^9 \text{ J} $$</p>
+                <p>Se requieren $7,09 \cdot 10^9 \text{ Joules}$ para el lanzamiento.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 6 (Caso 3) - Velocidad de Escape</div>
+            <div class="ex-statement">
+                "A partir de principios de conservación, deduzca la expresión de la velocidad de escape desde la superficie de un planeta esférico. Calcule dicha velocidad de escape para el planeta Marte ($M = 6,42 \cdot 10^{23}$ kg, $R = 3390$ km)."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>La velocidad de escape es aquella velocidad mínima inicial que se debe proporcionar a un objeto en la superficie del planeta para que consiga escapar por completo de la atracción gravitatoria, es decir, llegando a una distancia infinita con velocidad residual cero.</p>
+                <p>Aplicamos el Teorema de Conservación de la Energía Mecánica entre la superficie ($A$) y el infinito ($\infty$):</p>
+                <p>$$ E_{m(A)} = E_{m(\infty)} \implies \frac{1}{2}m v_e^2 - G\frac{M \cdot m}{R} = 0 + 0 $$</p>
+                <p>Cancelamos la masa del objeto ($m$) y despejamos $v_e$:</p>
+                <p>$$ v_e = \sqrt{\frac{2 \cdot G \cdot M}{R}} $$</p>
+                <p>Sustituimos los datos de Marte en Sistema Internacional ($R = 3,39 \cdot 10^6$ m):</p>
+                <p>$$ v_e = \sqrt{\frac{2 \cdot 6,67 \cdot 10^{-11} \cdot 6,42 \cdot 10^{23}}{3,39 \cdot 10^6}} = \sqrt{25265604} \approx 5026,5 \text{ m/s} $$</p>
+            </div>
+        </div>
+
+        <!-- Ejercicios Caso 4 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 7 (Caso 4) - Superposición y Punto de Campo Nulo (EBAU)</div>
+            <div class="ex-statement">
+                "Dos masas puntuales, $M_A = 5$ kg y $M_B = 20$ kg, se encuentran situadas en el eje X en las posiciones $x_A = 0$ m y $x_B = 6$ m respectivamente. Determine el punto del eje X, situado entre ambas masas, donde el campo gravitatorio total es nulo."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Situamos el punto de equilibrio a una distancia $x$ de la masa $M_A$ (en el origen). La distancia a la masa $M_B$ será entonces $(6 - x)$. Para que el campo sea nulo, ambos vectores de campo deben apuntar en sentidos opuestos y tener el mismo módulo.</p>
+                <p>$$ |\vec{g}_A| = |\vec{g}_B| \implies G\frac{M_A}{x^2} = G\frac{M_B}{(6-x)^2} $$</p>
+                <p>Simplificamos la $G$ y sustituimos las masas:</p>
+                <p>$$ \frac{5}{x^2} = \frac{20}{(6-x)^2} $$</p>
+                <p>Para evitar una ecuación de segundo grado, sacamos la raíz cuadrada a ambos lados (sabiendo que tomamos la distancia física positiva):</p>
+                <p>$$ \frac{\sqrt{5}}{x} = \frac{\sqrt{20}}{6-x} \implies \frac{6-x}{x} = \sqrt{\frac{20}{5}} = \sqrt{4} = 2 $$</p>
+                <p>$$ 6 - x = 2x \implies 3x = 6 \implies x = 2 \text{ m} $$</p>
+                <p>El campo es nulo exactamente en la coordenada $x = 2$ m.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 8 (Caso 4) - Trabajo de las fuerzas del Campo Gravitatorio</div>
+            <div class="ex-statement">
+                "Utilizando la misma configuración del ejercicio anterior ($M_A=5$ kg en $x=0$, $M_B=20$ kg en $x=6$), calcule el trabajo que realiza el campo gravitatorio para trasladar una pequeña masa $m = 0,1$ kg desde el punto $P_1(1,0)$ m hasta el punto de equilibrio hallado $P_2(2,0)$ m."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>El trabajo realizado por una fuerza conservativa como la gravedad es el negativo de la variación de su energía potencial.</p>
+                <p>$$ W_{P_1 \to P_2} = -\Delta E_p = -m \cdot (V_{P_2} - V_{P_1}) = m \cdot (V_{P_1} - V_{P_2}) $$</p>
+                <p>Calculamos el potencial escalar ($V$) en cada punto, aplicando el principio de superposición ($V = -G\frac{M}{r}$):</p>
+                <p><b>En $P_1(1,0)$:</b> Distancia a $M_A = 1$ m. Distancia a $M_B = 5$ m.</p>
+                <p>$$ V_{P_1} = -G \left( \frac{5}{1} + \frac{20}{5} \right) = -G(5 + 4) = -9G \text{ J/kg} $$</p>
+                <p><b>En $P_2(2,0)$:</b> Distancia a $M_A = 2$ m. Distancia a $M_B = 4$ m.</p>
+                <p>$$ V_{P_2} = -G \left( \frac{5}{2} + \frac{20}{4} \right) = -G(2,5 + 5) = -7,5G \text{ J/kg} $$</p>
+                <p>Sustituimos en la ecuación del trabajo:</p>
+                <p>$$ W = 0,1 \cdot [(-9G) - (-7,5G)] = 0,1 \cdot (-1,5G) = -0,15 \cdot 6,67 \cdot 10^{-11} $$</p>
+                <p>$$ W = -1,00 \cdot 10^{-11} \text{ Joules} $$</p>
+                <p>El resultado negativo indica que hay que realizar un esfuerzo externo para llevar la partícula hacia allí, el campo se opone a ese desplazamiento (ya que se aleja de una zona de menor potencial, $P_1$, dominada fuertemente por $M_A$).</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PESTAÑA 2: CAMPO ELÉCTRICO                 -->
+<!-- ========================================== -->
+<div id="Electrico" class="tab-content">
+    
+    <div class="formula-section">
+        <h2>Recetario de Fórmulas: Campo Eléctrico</h2>
+        <div class="formula-grid">
+            <div class="formula-box">
+                <h4>Ley de Coulomb</h4>
+                <div class="math-expr">$$ \vec{F} = K \frac{q_1 \cdot q_2}{r^2} \vec{u}_r $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Intensidad de Campo Eléctrico</h4>
+                <div class="math-expr">$$ \vec{E} = K \frac{q}{r^2} \vec{u}_r \quad ; \quad \vec{F} = q \cdot \vec{E} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Potencial Eléctrico (Escalar)</h4>
+                <div class="math-expr">$$ V = K \frac{q}{r} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Energía Potencial Eléctrica</h4>
+                <div class="math-expr">$$ E_p = K \frac{q_1 \cdot q_2}{r} = q \cdot V $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Trabajo del Campo (De A a B)</h4>
+                <div class="math-expr">$$ W_{campo} = -\Delta E_p = -q(V_B - V_A) = q(V_A - V_B) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Campo Uniforme (Condensador)</h4>
+                <div class="math-expr">$$ E = \frac{|\Delta V|}{d} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Teorema de Gauss</h4>
+                <div class="math-expr">$$ \Phi = \oint_S \vec{E} \cdot d\vec{S} = \frac{Q_{interior}}{\varepsilon_0} $$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-section">
+        <h2>Casos Teóricos y Modelos de Resolución</h2>
+
+        <!-- Caso 1 -->
+        <div class="case-card">
+            <div class="quote-title">"Sean dos cargas puntuales fijas q1 y q2 situadas en coordenadas (x,y). Calcule el campo eléctrico total en un punto P, y encuentre la coordenada donde el campo es nulo o el potencial es nulo..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Vector Campo Eléctrico y Superposición</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Cálculo del Campo Vectorial en 2D:</strong> La dinámica es parecida a la gravedad, pero <strong>los signos dictan la dirección</strong>. 
+                <br> - Carga Positiva (+): Vector sale (repulsivo).
+                <br> - Carga Negativa (-): Vector entra (atractivo).
+                <br>Calcula el módulo con valor absoluto: $$ |\vec{E}| = K \frac{|q|}{r^2} $$. Descompón con trigonometría en $\vec{i}$ y $\vec{j}$.</li>
+                <li><strong>Punto de Campo Nulo ($\vec{E}=0$):</strong> Si cargas tienen igual signo, punto está ENTRE ellas (igualas módulos y sacas raíces). Si signos opuestos, está FUERA del lado de la menor.</li>
+                <li><strong>Punto de Potencial Nulo ($V=0$):</strong> El potencial es <strong>escalar</strong>. Mantenemos signos de carga: $$ K\frac{+q_1}{r_1} + K\frac{-q_2}{r_2} = 0 $$. Da dos soluciones en eje 1D (interior y exterior).</li>
+            </ul>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="case-card">
+            <div class="quote-title">"Un electrón (o protón) se abandona en el origen o se dispara con velocidad v dentro del campo generado por otras cargas. Calcule el trabajo realizado o la velocidad adquirida..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Trabajo y Conservación de la Energía Electroestática</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Uso del Trabajo del Campo:</strong> 
+                <br>1. Calcula $V_A$ sumando escalares. Calcula $V_B$.
+                <br>2. Aplica $$ W_{campo} = -q_{viajera}(V_B - V_A) $$
+                <div class="warning">Cuidado estricto con el signo de $q_{viajera}$. Si W es positivo, el campo hace el trabajo y la carga acelera espontáneamente.</div>
+                </li>
+                <li><strong>Aceleración Libre (Conservación de Energía):</strong> Teorema de fuerzas conservativas:
+                <br>$$ \Delta E_c + \Delta E_p = 0 \implies \frac{1}{2}m v_B^2 - \frac{1}{2}m v_A^2 = -q(V_B - V_A) $$
+                <br>Ideal para resolver problemas de tubos de rayos catódicos o aceleradores de electrones y protones.
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE EJERCICIOS ELÉCTRICO -->
+    <div class="exercises-section">
+        <h2>Ejercicios Resueltos de Aplicación (Campo Eléctrico)</h2>
+
+        <!-- Ejercicios Caso 1 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 1 (Caso 1) - Puntos de Potencial y Campo Nulo (EBAU Madrid)</div>
+            <div class="ex-statement">
+                "Dos cargas puntuales $q_1 = 2 \text{ mC}$ y $q_2 = -4 \text{ mC}$ están colocadas en el plano XY en las posiciones $(-1,0)$ m y $(3,0)$ m, respectivamente. a) Determine en qué punto(s) de la línea que une las cargas el potencial eléctrico es cero. b) ¿Es nulo el campo eléctrico en esos puntos?"
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p><b>Apartado a:</b> El potencial eléctrico es una magnitud escalar. En un punto genérico $x$ de la recta, se debe cumplir $V_{total} = 0$.</p>
+                <p>$$ V = K\frac{q_1}{|x - (-1)|} + K\frac{q_2}{|x - 3|} = 0 $$</p>
+                <p>Sustituyendo las cargas (respetando sus signos) y dividiendo por $K \cdot 10^{-3}$:</p>
+                <p>$$ \frac{2}{|x+1|} - \frac{4}{|x-3|} = 0 \implies \frac{2}{|x+1|} = \frac{4}{|x-3|} \implies |x-3| = 2|x+1| $$</p>
+                <p>Desglosamos en los dos casos físicos para la línea de los ejes:</p>
+                <ul>
+                    <li>Punto interior (entre $-1$ y $3$): $(3-x) = 2(x+1) \implies 3 - x = 2x + 2 \implies 3x = 1 \implies x = 1/3 \text{ m}$.</li>
+                    <li>Punto exterior izquierdo (más cerca de la carga débil $q_1$): $(3-x) = -2(x+1) \implies 3 - x = -2x - 2 \implies x = -5 \text{ m}$.</li>
+                </ul>
+                <p>Los puntos son $P_1(1/3, 0)$ y $P_2(-5, 0)$.</p>
+                <p><b>Apartado b:</b> Comprobemos si el campo es nulo en el punto $x = 1/3$. En ese punto situado entre una carga positiva a su izquierda y una carga negativa a su derecha, el campo repulsivo de la primera empuja hacia $+x$ y el campo atractivo de la segunda tira hacia $+x$. Al tener el mismo sentido, se suman sus módulos y es imposible que se cancelen. El campo <b>NO es nulo</b>.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 2 (Caso 1) - Campo eléctrico bidimensional vectorial</div>
+            <div class="ex-statement">
+                "Un electrón de carga $-e$ y un positrón de carga $+e$ se encuentran inicialmente fijos en el plano XY en las posiciones $(0, 6)$ nm y $(0, -6)$ nm, respectivamente. Obtenga el vector campo eléctrico en el punto $P(8, 0)$ nm."<br>
+                <i>Datos: $K = 9 \cdot 10^9 \text{ N m}^2/\text{C}^2$, $e = 1,6 \cdot 10^{-19}$ C. 1 nm = $10^{-9}$ m.</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Calculamos la distancia desde las cargas al punto P por Pitágoras: $d = \sqrt{8^2 + 6^2} = 10 \text{ nm} = 10 \cdot 10^{-9} \text{ m}$.</p>
+                <p>Calculamos el módulo del campo eléctrico generado por cada partícula (mismas cargas en valor absoluto y misma distancia):</p>
+                <p>$$ |E_1| = |E_2| = K \frac{|q|}{d^2} = 9 \cdot 10^9 \frac{1,6 \cdot 10^{-19}}{(10 \cdot 10^{-9})^2} = \frac{14,4 \cdot 10^{-10}}{100 \cdot 10^{-18}} = 1,44 \cdot 10^7 \text{ V/m} $$</p>
+                <p>Por trigonometría, el ángulo $\alpha$ de los vectores con el eje X cumple: $\cos \alpha = 8/10 = 0,8$ y $\sin \alpha = 6/10 = 0,6$.</p>
+                <p>La carga en $(0,6)$ es el electrón (negativo), su campo apunta <b>hacia ella</b> (arriba-izquierda): $\vec{E}_1 = -|E|\cos\alpha \vec{i} + |E|\sin\alpha \vec{j}$.<br>
+                La carga en $(0,-6)$ es el positrón (positivo), su campo apunta <b>alejándose de ella</b> (arriba-derecha): $\vec{E}_2 = +|E|\cos\alpha \vec{i} + |E|\sin\alpha \vec{j}$.</p>
+                <p>Sumamos vectorialmente (superposición): las componentes en X se anulan por simetría.</p>
+                <p>$$ \vec{E}_{total} = 2 \cdot |E| \cdot \sin\alpha \vec{j} = 2 \cdot (1,44 \cdot 10^7) \cdot 0,6 \vec{j} = 1,728 \cdot 10^7 \vec{j} \text{ N/C} $$</p>
+            </div>
+        </div>
+
+        <!-- Ejercicios Caso 2 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 3 (Caso 2) - Trabajo de las Fuerzas del Campo</div>
+            <div class="ex-statement">
+                "Dos cargas puntuales de $-3 \mu\text{C}$ y $+2 \mu\text{C}$ están situadas en los puntos $(-2, 0)$ m y $(3, 0)$ m. Calcule el trabajo que realiza el campo eléctrico para traer una carga de $+4 \mu\text{C}$ desde el infinito al punto $(0, 4)$ m."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Nos solicitan "Trabajo realizado por el campo". Usamos $W_{campo, \infty \to P} = -q_{movil} \cdot (V_P - V_\infty)$. Sabemos que en el infinito el potencial es $0$ V, por lo que $W = -q_{movil} \cdot V_P$.</p>
+                <p>Calculamos el potencial escalar $V_P$ creado por las dos cargas fijas en el punto $P(0,4)$.</p>
+                <p>Distancia de la carga 1 $(-2,0)$ a $(0,4)$: $d_1 = \sqrt{2^2 + 4^2} = \sqrt{20}$ m.</p>
+                <p>Distancia de la carga 2 $(3,0)$ a $(0,4)$: $d_2 = \sqrt{3^2 + 4^2} = 5$ m.</p>
+                <p>$$ V_P = 9 \cdot 10^9 \left( \frac{-3 \cdot 10^{-6}}{\sqrt{20}} + \frac{2 \cdot 10^{-6}}{5} \right) = 9 \cdot 10^9 (-6,71 \cdot 10^{-7} + 4 \cdot 10^{-7}) = -2437,6 \text{ V} $$</p>
+                <p>Introducimos en el trabajo con la carga móvil de $+4 \cdot 10^{-6}$ C:</p>
+                <p>$$ W = -(+4 \cdot 10^{-6}) \cdot (-2437,6 - 0) = +9,75 \cdot 10^{-3} \text{ J} $$</p>
+                <p>Al ser positivo, indica que el campo eléctrico realiza el trabajo espontáneamente (la carga positiva es fuertemente atraída por la carga negativa que domina el potencial en ese punto).</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 4 (Caso 2) - Partícula acelerada en Campo Eléctrico</div>
+            <div class="ex-statement">
+                "Un electrón se acelera partiendo del reposo aplicando una diferencia de potencial de 50 V entre dos placas metálicas. Calcule la velocidad que adquiere el electrón al llegar a la segunda placa."<br>
+                <i>Datos: $m_e = 9,1 \cdot 10^{-31}$ kg, $q_e = -1,6 \cdot 10^{-19}$ C.</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Para acelerar un electrón (carga negativa), este debe desplazarse hacia un potencial mayor ($\Delta V > 0$, es decir, hacia la placa positiva). Aplicamos el Principio de Conservación de la Energía Mecánica en campos conservativos:</p>
+                <p>$$ \Delta E_c + \Delta E_p = 0 \implies (E_{c, final} - 0) = - q_e \cdot \Delta V $$</p>
+                <p>La energía cinética ganada es:</p>
+                <p>$$ E_c = - (-1,6 \cdot 10^{-19}) \cdot 50 = + 8 \cdot 10^{-18} \text{ J} $$</p>
+                <p>A partir de la ecuación de la energía cinética clásica, despejamos la velocidad $v$:</p>
+                <p>$$ \frac{1}{2}m_e v^2 = 8 \cdot 10^{-18} \implies v = \sqrt{\frac{2 \cdot 8 \cdot 10^{-18}}{9,1 \cdot 10^{-31}}} = \sqrt{1,758 \cdot 10^{13}} = 4,19 \cdot 10^6 \text{ m/s} $$</p>
+                <p>Esta es una técnica balística común. La velocidad es $\sim 1\%$ de la velocidad de la luz, por lo que el uso de mecánica clásica (no relativista) es aceptable aquí.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PESTAÑA 3: CAMPO MAGNÉTICO E INDUCCIÓN     -->
+<!-- ========================================== -->
+<div id="Magnetico" class="tab-content">
+
+    <div class="formula-section">
+        <h2>Recetario de Fórmulas: Magnetismo e Inducción</h2>
+        <div class="formula-grid">
+            <div class="formula-box">
+                <h4>Fuerza de Lorentz (Partículas)</h4>
+                <div class="math-expr">$$ \vec{F} = q (\vec{v} \times \vec{B}) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Radio de Giro en Campo Uniforme</h4>
+                <div class="math-expr">$$ R = \frac{m \cdot v}{|q| \cdot B} \quad ; \quad T = \frac{2\pi \cdot m}{|q| \cdot B} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Fuerza de Laplace (Conductores)</h4>
+                <div class="math-expr">$$ \vec{F} = I (\vec{L} \times \vec{B}) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Campo Magnético de un Hilo Infinito</h4>
+                <div class="math-expr">$$ B = \frac{\mu_0 \cdot I}{2\pi \cdot d} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Fuerza entre Hilos Paralelos</h4>
+                <div class="math-expr">$$ \frac{F}{L} = \frac{\mu_0 \cdot I_1 \cdot I_2}{2\pi \cdot d} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Flujo Magnético</h4>
+                <div class="math-expr">$$ \Phi = N \cdot B \cdot S \cdot \cos(\alpha) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ley de Faraday-Lenz</h4>
+                <div class="math-expr">$$ \epsilon = -\frac{d\Phi}{dt} \quad ; \quad I = \frac{|\epsilon|}{R} $$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-section">
+        <h2>Casos Teóricos y Modelos de Resolución</h2>
+
+        <!-- Caso 1 -->
+        <div class="case-card">
+            <div class="quote-title">"Un ion/electrón penetra perpendicularmente en un campo magnético uniforme B con una velocidad v. Determine el radio de su trayectoria, su periodo o su relación masa/carga..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Ciclotrón y Fuerza de Lorentz</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Dinámica del Giro:</strong> La Fuerza Magnética es perpendicular a la velocidad. Actúa como <strong>Fuerza Centrípeta</strong> provocando un MCU.
+                <br><em>Demostración obligatoria en PAU:</em> $$ F_m = F_c \implies |q| \cdot v \cdot B \cdot \sin(90^\circ) = m\frac{v^2}{R} $$
+                </li>
+                <li><strong>Despeje del Radio y Frecuencia:</strong> Cancelando $v$: $$ R = \frac{m \cdot v}{|q| \cdot B} $$
+                <br>Para el periodo $T$: introducimos $v = 2\pi R / T$, quedando $$ T = \frac{2\pi \cdot m}{|q| \cdot B} $$.
+                </li>
+                <li><strong>Selector de Velocidades:</strong> Si indican "pasa en línea recta sin desviarse" en campos E y B cruzados: $\Sigma F = 0 \implies F_e = F_m \implies |q|E = |q|vB \implies v = E/B$.</li>
+            </ul>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="case-card">
+            <div class="quote-title">"Dos hilos rectilíneos indefinidos y paralelos transportan corrientes I1 e I2. Calcule el campo magnético en un punto intermedio y la fuerza por unidad de longitud..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Ampère y Laplace (Hilos Paralelos)</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Campo resultante en un punto:</strong> Fórmula de hilo infinito $B = \frac{\mu_0 \cdot I}{2\pi \cdot d}$. Usa regla mano derecha para ver cruces ($\otimes$) o puntos ($\odot$). Suma o resta.</li>
+                <li><strong>Fuerza entre conductores:</strong> Fórmula unificada: $$ \frac{F}{L} = \frac{\mu_0 \cdot I_1 \cdot I_2}{2\pi \cdot d} $$
+                <div class="warning">Corrientes en el MISMO sentido se ATRAEN. Sentido OPUESTO se REPELEN.</div>
+                </li>
+            </ul>
+        </div>
+
+        <!-- Caso 3 -->
+        <div class="case-card">
+            <div class="quote-title">"Una espira se encuentra en un campo magnético. B varía con el tiempo, la espira gira con w, o un lado se mueve a velocidad v. Calcule la FEM inducida..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Inducción (Ley de Faraday-Lenz)</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Paso 1:</strong> Escribe la fórmula base $$ \Phi(t) = B(t) \cdot S(t) \cdot \cos(\theta(t)) $$</li>
+                <li><strong>Paso 2:</strong> Inyecta la variable. Alternador: $\cos(\omega t)$. Varilla: $S = L(x_0 + vt)$. Campo variable: $B(t) = kt^2$.</li>
+                <li><strong>Paso 3:</strong> Deriva respecto a $t$ con $\epsilon = - d\Phi/dt$. ¡No olvides el signo negativo y citar la Ley de Lenz (corriente se opone al cambio de flujo)!</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE EJERCICIOS MAGNETISMO -->
+    <div class="exercises-section">
+        <h2>Ejercicios Resueltos de Aplicación (Magnetismo e Inducción)</h2>
+
+        <!-- Ejercicios Caso 1 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 1 (Caso 1) - Espectrómetro y Radio de Giro</div>
+            <div class="ex-statement">
+                "Un haz de iones de $\text{Ag}^+$ se aceleran con una diferencia de potencial de 3 kV partiendo del reposo. Tras acelerar, entran en un campo magnético de 200 mT perpendicular a su trayectoria. Calcule a) la velocidad que adquieren y b) el radio de la trayectoria descrita."<br>
+                <i>Datos: $e = 1,6 \cdot 10^{-19}$ C, Masa atómica $\text{Ag} = 107,9 \text{ u}$, $1 \text{ u} = 1,66 \cdot 10^{-27}$ kg.</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p><b>Apartado a:</b> Primera fase de aceleración eléctrica. Convertimos la masa a kg: $m = 107,9 \cdot 1,66 \cdot 10^{-27} = 1,79 \cdot 10^{-25}$ kg. Por conservación de energía:</p>
+                <p>$$ \Delta E_c = q \Delta V \implies \frac{1}{2}mv^2 = qV \implies v = \sqrt{\frac{2qV}{m}} $$</p>
+                <p>$$ v = \sqrt{\frac{2 \cdot 1,6 \cdot 10^{-19} \cdot 3000}{1,79 \cdot 10^{-25}}} = \sqrt{5363128} = 2315,8 \text{ m/s} $$</p>
+                <p><b>Apartado b:</b> Segunda fase de campo magnético. Igualamos fuerza de Lorentz a centrípeta (deducción exigida):</p>
+                <p>$$ q v B = m \frac{v^2}{R} \implies R = \frac{m \cdot v}{q \cdot B} $$</p>
+                <p>$$ R = \frac{1,79 \cdot 10^{-25} \cdot 2315,8}{1,6 \cdot 10^{-19} \cdot 0,2} = 0,0129 \text{ m} = 1,29 \text{ cm} $$</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 2 (Caso 1) - Selector de Velocidades E y B cruzados</div>
+            <div class="ex-statement">
+                "Un ión penetra en una región que posee un campo eléctrico $\vec{E} = 5000 \vec{j} \text{ V/m}$ y un campo magnético $\vec{B} = 0,1 \vec{k} \text{ T}$. El ión viaja en el eje X sin desviarse. Deduzca qué velocidad lleva el ión para lograrlo."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Para que la carga viaje en línea recta sin desviarse, la Fuerza Eléctrica y la Fuerza Magnética de Lorentz deben cancelarse mutuamente, logrando una fuerza neta nula.</p>
+                <p>$$ \Sigma \vec{F} = \vec{F}_e + \vec{F}_m = 0 \implies \vec{F}_e = - \vec{F}_m $$</p>
+                <p>Igualando sus módulos (ya que $\vec{v}$ y $\vec{B}$ son perpendiculares):</p>
+                <p>$$ |q| \cdot E = |q| \cdot v \cdot B $$</p>
+                <p>Se cancela la carga $q$, demostrando que este filtro funciona para cualquier ión sin importar su masa o su carga, filtrando única y exclusivamente su velocidad:</p>
+                <p>$$ v = \frac{E}{B} = \frac{5000}{0,1} = 5 \cdot 10^4 \text{ m/s} $$</p>
+            </div>
+        </div>
+
+        <!-- Ejercicios Caso 2 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 3 (Caso 2) - Interacción de Hilos Paralelos Indefinidos</div>
+            <div class="ex-statement">
+                "Dos hilos rectilíneos paralelos están separados 10 cm. El primero lleva $I_1 = 5$ A. Sabiendo que la fuerza magnética por unidad de longitud entre ellos es repulsiva y vale $2,5 \cdot 10^{-5}$ N/m, calcule la intensidad $I_2$ que circula por el segundo y razone su sentido."<br>
+                <i>Dato: $\mu_0 = 4\pi \cdot 10^{-7} \text{ T m/A}$</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>La fuerza por unidad de longitud viene dada por la interacción del campo de un hilo sobre el otro:</p>
+                <p>$$ \frac{F}{L} = \frac{\mu_0 \cdot I_1 \cdot I_2}{2\pi \cdot d} $$</p>
+                <p>Despejamos la intensidad $I_2$ e introducimos los valores ($d = 0,1$ m):</p>
+                <p>$$ 2,5 \cdot 10^{-5} = \frac{4\pi \cdot 10^{-7} \cdot 5 \cdot I_2}{2\pi \cdot 0,1} = \frac{2 \cdot 10^{-7} \cdot 5 \cdot I_2}{0,1} = 10^{-5} \cdot I_2 $$</p>
+                <p>$$ I_2 = \frac{2,5 \cdot 10^{-5}}{10^{-5}} = 2,5 \text{ A} $$</p>
+                <p>Respecto al sentido, la teoría dictamina que las corrientes en el mismo sentido generan fuerza de Lorentz atractiva, y corrientes en <b>sentidos opuestos generan repulsión</b>. Como el enunciado indica que la fuerza es repulsiva, $I_2$ debe fluir en sentido antiparalelo a $I_1$.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 4 (Caso 3) - Inducción en una Varilla Deslizante</div>
+            <div class="ex-statement">
+                "Una varilla de $L = 20$ cm desliza a $v = 2 \text{ m/s}$ sobre unos raíles conductores paralelos cerrados por una resistencia $R = 0,5 \ \Omega$. Todo el conjunto se encuentra en un campo magnético uniforme perpendicular al circuito de $B = 0,4$ T. Calcule la Fuerza Electromotriz inducida y la corriente que recorre el circuito."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Definimos el flujo magnético que atraviesa el circuito rectangular variable. El área $S(t)$ crece porque uno de los lados, $x(t)$, aumenta de tamaño: $x(t) = x_0 + v \cdot t$.</p>
+                <p>$$ \Phi(t) = B \cdot S(t) = B \cdot L \cdot x(t) = B \cdot L \cdot (x_0 + v \cdot t) $$</p>
+                <p>Aplicamos la Ley de Faraday-Lenz derivando respecto al tiempo:</p>
+                <p>$$ \epsilon = - \frac{d\Phi}{dt} = - B \cdot L \cdot \frac{d}{dt}(x_0 + v \cdot t) = - B \cdot L \cdot v $$</p>
+                <p>Sustituyendo los valores absolutos:</p>
+                <p>$$ |\epsilon| = 0,4 \cdot 0,2 \cdot 2 = 0,16 \text{ V} $$</p>
+                <p>Calculamos la intensidad inducida usando la Ley de Ohm macroscópica:</p>
+                <p>$$ I = \frac{|\epsilon|}{R} = \frac{0,16}{0,5} = 0,32 \text{ A} $$</p>
+                <p>El signo negativo inicial de Lenz indica que la corriente fluirá en el sentido capaz de originar un campo que se oponga al aumento de superficie y de flujo en el interior.</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 5 (Caso 3) - Alternador y Variación de Ángulo</div>
+            <div class="ex-statement">
+                "Una espira cuadrada de lado 10 cm gira con una frecuencia de 50 Hz en el interior de un campo magnético constante de $B = 0,3$ T perpendicular a su eje de giro. Determine la expresión de la f.e.m. inducida y su valor máximo."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Aquí la superficie ($S = 0,1 \cdot 0,1 = 0,01 \text{ m}^2$) y el campo $B$ son fijos, pero el ángulo varía por el giro continuo uniforme $\theta(t) = \omega \cdot t$.</p>
+                <p>Calculamos la velocidad angular: $\omega = 2\pi f = 2\pi(50) = 100\pi \text{ rad/s}$.</p>
+                <p>Planteamos el flujo magnético y lo derivamos (Faraday):</p>
+                <p>$$ \Phi(t) = B \cdot S \cdot \cos(\omega t) = 0,3 \cdot 0,01 \cdot \cos(100\pi t) = 0,003 \cos(100\pi t) \text{ Wb} $$</p>
+                <p>$$ \epsilon = - \frac{d\Phi}{dt} = - B \cdot S \cdot [-\omega \sin(\omega t)] = B \cdot S \cdot \omega \cdot \sin(\omega t) $$</p>
+                <p>Sustituyendo:</p>
+                <p>$$ \epsilon(t) = 0,003 \cdot 100\pi \cdot \sin(100\pi t) = 0,3\pi \sin(100\pi t) \text{ Voltios} $$</p>
+                <p>El valor máximo de la fem (amplitud del generador) se produce cuando el seno alcanza su máximo absoluto (valor 1):</p>
+                <p>$$ \epsilon_{max} = 0,3\pi \approx 0,942 \text{ V} $$</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PESTAÑA 4: ÓPTICA                          -->
+<!-- ========================================== -->
+<div id="Optica" class="tab-content">
+    
+    <div class="formula-section">
+        <h2>Recetario de Fórmulas: Óptica</h2>
+        <div class="formula-grid">
+            <div class="formula-box">
+                <h4>Índice de Refracción</h4>
+                <div class="math-expr">$$ n = \frac{c}{v} \quad ; \quad \lambda_{medio} = \frac{\lambda_{vacío}}{n} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ley de Snell (Refracción)</h4>
+                <div class="math-expr">$$ n_1 \cdot \sin(\hat{i}) = n_2 \cdot \sin(\hat{r}) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ángulo Límite (Reflexión Total)</h4>
+                <div class="math-expr">$$ \sin(\theta_L) = \frac{n_2}{n_1} \quad (si \ n_1 > n_2) $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ecuación de Lentes Delgadas</h4>
+                <div class="math-expr">$$ \frac{1}{s'} - \frac{1}{s} = \frac{1}{f'} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Potencia Óptica (Lentes)</h4>
+                <div class="math-expr">$$ P = \frac{1}{f'(m)} \text{ (en Dioptrías)} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ecuación de Espejos Esféricos</h4>
+                <div class="math-expr">$$ \frac{1}{s'} + \frac{1}{s} = \frac{1}{f} = \frac{2}{R} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Aumento Lateral</h4>
+                <div class="math-expr">$$ A_{lente} = \frac{y'}{y} = \frac{s'}{s} \quad ; \quad A_{espejo} = -\frac{s'}{s} $$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-section">
+        <h2>Casos Teóricos y Modelos de Resolución</h2>
+
+        <!-- Caso 1 -->
+        <div class="case-card">
+            <div class="quote-title">"Un rayo de luz monocromática incide desde el aire sobre un bloque de vidrio/agua con índice n. Calcule los ángulos de refracción o el ángulo crítico..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Óptica Física y Propagación</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>El mandamiento de la frecuencia:</strong> El "color" de la luz está dictado por su frecuencia ($f$), y esa <strong>jamás cambia</strong> al cambiar de medio. $$ f = \frac{v_1}{\lambda_1} = \frac{v_2}{\lambda_2} $$</li>
+                <li><strong>Ley de Snell:</strong> Todo ángulo se mide respecto a la <strong>Recta Normal</strong>. $$ n_1 \cdot \sin(i) = n_2 \cdot \sin(r) $$</li>
+                <li><strong>Ángulo Límite ($\theta_L$):</strong> Solo es posible si va de mayor índice a menor índice ($n_1 > n_2$). Exiges que el rayo salga a 90º (rasante).
+                <br>$$ \sin(\theta_L) = n_2 / n_1 $$
+                </li>
+            </ul>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="case-card">
+            <div class="quote-title">"Se sitúa un objeto luminoso a una distancia 's' a la izquierda de una lente convergente / divergente. Calcule la posición de la imagen y su aumento..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Lentes Delgadas (Óptica Geométrica)</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Aplicar NORMA DIN 1335 ESTRICTAMENTE:</strong> 
+                <br> - El objeto está a la izquierda, por tanto $s$ es <strong>SIEMPRE NEGATIVA</strong>.
+                <br> - <em>Convergente</em>: foco imagen es positivo <strong>$f' > 0$</strong>.
+                <br> - <em>Divergente</em>: foco imagen es negativo <strong>$f' < 0$</strong>.
+                </li>
+                <li><strong>Ecuación base:</strong> $$ \frac{1}{s'} - \frac{1}{s} = \frac{1}{f'} $$</li>
+                <li><strong>Aumento Lente ($A = s'/s$):</strong> Si $A$ es negativo, sale invertida. Si te dan un dato como "imagen derecha y triple", deduces que $A = +3$ y por tanto $s' = 3s$. Inyectas eso en la ecuación general y evitas incógnitas cruzadas.</li>
+            </ul>
+        </div>
+
+        <!-- Caso 3 -->
+        <div class="case-card">
+            <div class="quote-title">"Un objeto se sitúa frente a un espejo cóncavo / convexo... Calcule la posición de la imagen y radio de curvatura..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Espejos Esféricos (Óptica Geométrica)</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>La dualidad Cóncavo/Convexo:</strong> 
+                <br> - Espejo <em>Cóncavo</em> (cuchara por dentro): Radio $R$ y foco $f = R/2$ son <strong>NEGATIVOS</strong>. 
+                <br> - Espejo <em>Convexo</em> (cuchara por fuera): Radio $R$ y foco $f$ son <strong>POSITIVOS</strong>. Siempre forma virtuales derechas menores.
+                </li>
+                <li><strong>Trampas del Aumento ($A = -s'/s$):</strong> ¡Ojo a ese menos! Una imagen invertida (A negativo) implica $s'$ positiva, es decir, imagen real a la izquierda del espejo (donde las coordenadas son negativas, de ahí la aparente rareza geométrica, pero matemáticamente funciona a la perfección).</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE EJERCICIOS ÓPTICA -->
+    <div class="exercises-section">
+        <h2>Ejercicios Resueltos de Aplicación (Óptica)</h2>
+
+        <!-- Ejercicios Caso 1 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 1 (Caso 1) - Ley de Snell y Variación de Longitud de Onda</div>
+            <div class="ex-statement">
+                "Un haz de luz láser de longitud de onda en el vacío $\lambda_0 = 600$ nm incide con un ángulo de 45º desde el aire ($n \approx 1$) sobre la superficie plana de un bloque de vidrio de índice de refracción $n = 1,5$. Determine el ángulo de refracción y la longitud de onda de la luz dentro del vidrio."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p><b>1. Ángulo de Refracción:</b> Aplicamos la Ley de Snell tomando como ángulo de incidencia $i = 45^\circ$ medido respecto a la normal.</p>
+                <p>$$ n_1 \sin(\hat{i}) = n_2 \sin(\hat{r}) \implies 1 \cdot \sin(45^\circ) = 1,5 \cdot \sin(\hat{r}) $$</p>
+                <p>$$ \sin(\hat{r}) = \frac{\sqrt{2}/2}{1,5} \approx \frac{0,707}{1,5} = 0,471 \implies \hat{r} = \arcsin(0,471) = 28,1^\circ $$</p>
+                <p>El rayo se acerca a la normal por entrar a un medio más refringente.</p>
+                <p><b>2. Longitud de Onda:</b> Sabiendo que la frecuencia es invariante ($f_1 = f_2$), usamos las relaciones de velocidades e índices: $\lambda_{vidrio} \cdot n_{vidrio} = \lambda_0 \cdot n_{aire}$.</p>
+                <p>$$ \lambda_{vidrio} = \frac{\lambda_0}{n_{vidrio}} = \frac{600 \text{ nm}}{1,5} = 400 \text{ nm} $$</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 2 (Caso 2) - Lente Convergente e Imagen Real (EBAU 2025)</div>
+            <div class="ex-statement">
+                "Se sitúa a la izquierda de una lente convergente un objeto de 4 cm de altura, formándose una imagen real y nítida de tamaño 2 cm. La distancia total entre el objeto y la imagen formada es de 45 cm. Determine la posición del objeto, la posición de la imagen y la distancia focal de la lente."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Aplicamos estrictamente las normas DIN 1335. Al decir "imagen real" en una lente, sabemos que se forma a la derecha ($s' > 0$). Además, en lentes convergentes, las imágenes reales son siempre invertidas, así que $y' = -2$ cm, y el objeto origen está vertical $y = 4$ cm.</p>
+                <p>Planteamos el aumento lateral:</p>
+                <p>$$ A = \frac{y'}{y} = \frac{s'}{s} \implies \frac{-2}{4} = \frac{s'}{s} \implies s = -2s' $$</p>
+                <p>La distancia geométrica total entre objeto e imagen es $|s| + |s'| = 45$ cm. Por DIN 1335, al ser $s$ negativo y $s'$ positivo, matemáticamente es: $s' - s = 45$.</p>
+                <p>Sustituimos $s = -2s'$ en esta restricción espacial:</p>
+                <p>$$ s' - (-2s') = 45 \implies 3s' = 45 \implies s' = 15 \text{ cm} $$</p>
+                <p>Y por tanto, la posición del objeto es: $s = -2(15) = -30 \text{ cm}$.</p>
+                <p>Por último, aplicamos la Ecuación de las Lentes para hallar el foco imagen $f'$:</p>
+                <p>$$ \frac{1}{s'} - \frac{1}{s} = \frac{1}{f'} \implies \frac{1}{15} - \frac{1}{-30} = \frac{1}{f'} \implies \frac{2}{30} + \frac{1}{30} = \frac{3}{30} = \frac{1}{10} $$</p>
+                <p>$$ f' = 10 \text{ cm} \text{ (positivo, confirmando que es convergente)} $$</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 3 (Caso 3) - Formación por Espejo Convexo</div>
+            <div class="ex-statement">
+                "Se desea fabricar un espejo convexo tal que, al situar un objeto a 12 cm de distancia frente a él, se forme una imagen cuyo tamaño se reduzca a la cuarta parte de su tamaño original. Determine la posición de la imagen y el radio de curvatura del espejo."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Los espejos convexos <b>siempre</b> forman imágenes virtuales, derechas (no invertidas) y más pequeñas. Al indicarnos que se reduce a la cuarta parte, afirmamos rotunda y analíticamente que el Aumento es $A = +1/4$.</p>
+                <p>Ubicamos el objeto según DIN: $s = -12$ cm.</p>
+                <p>Utilizamos la ecuación del aumento para espejos (¡lleva un signo negativo!):</p>
+                <p>$$ A = -\frac{s'}{s} \implies \frac{1}{4} = -\frac{s'}{-12} \implies s' = \frac{12}{4} = 3 \text{ cm} $$</p>
+                <p>La imagen es virtual y se forma 3 cm por detrás del espejo. Ahora usamos la Ecuación de los Espejos (que tiene un signo $+$) para calcular su foco $f$ y radio $R$:</p>
+                <p>$$ \frac{1}{s'} + \frac{1}{s} = \frac{1}{f} \implies \frac{1}{3} + \frac{1}{-12} = \frac{1}{f} $$</p>
+                <p>$$ \frac{4}{12} - \frac{1}{12} = \frac{3}{12} = \frac{1}{f} \implies f = \frac{12}{3} = 4 \text{ cm} $$</p>
+                <p>Sabiendo que $f = \frac{R}{2}$, entonces el radio es: $R = 2 \cdot f = 8 \text{ cm}$. Resultado positivo, certificando matemáticamente que el centro de curvatura del espejo convexo se ubica a la derecha.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ========================================== -->
+<!-- PESTAÑA 5: FÍSICA MODERNA                  -->
+<!-- ========================================== -->
+<div id="Moderna" class="tab-content">
+    
+    <div class="formula-section">
+        <h2>Recetario de Fórmulas: Cuántica y Nuclear</h2>
+        <div class="formula-grid">
+            <div class="formula-box">
+                <h4>Energía del Fotón (Planck)</h4>
+                <div class="math-expr">$$ E = h \cdot f = h \cdot \frac{c}{\lambda} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Efecto Fotoeléctrico (Einstein)</h4>
+                <div class="math-expr">$$ E_{fotón} = W_{extracción} + E_{c, max} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Potencial de Frenado</h4>
+                <div class="math-expr">$$ E_{c,max} = e \cdot V_{frenado} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Longitud de Onda de De Broglie</h4>
+                <div class="math-expr">$$ \lambda = \frac{h}{p} = \frac{h}{m \cdot v} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Ley de Desintegración Radiactiva</h4>
+                <div class="math-expr">$$ N(t) = N_0 \cdot e^{-\lambda t} \quad ; \quad A(t) = A_0 \cdot e^{-\lambda t} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Actividad, Periodo y Vida Media</h4>
+                <div class="math-expr">$$ A = \lambda \cdot N \quad ; \quad T_{1/2} = \frac{\ln 2}{\lambda} \quad ; \quad \tau = \frac{1}{\lambda} $$</div>
+            </div>
+            <div class="formula-box">
+                <h4>Equivalencia Masa-Energía</h4>
+                <div class="math-expr">$$ \Delta E = \Delta m \cdot c^2 $$</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="case-section">
+        <h2>Casos Teóricos y Modelos de Resolución</h2>
+
+        <!-- Caso 1 -->
+        <div class="case-card">
+            <div class="quote-title">"Se ilumina una superficie metálica, cuyo trabajo de extracción es W, con luz monocromática de longitud de onda λ. Calcule la energía cinética de los electrones emitidos y su potencial de frenado..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Cuántica y Efecto Fotoeléctrico</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>El filtro de las Unidades:</strong> Convertir energía en electronvoltios ($eV$) a Julios multiplicando por $1,6 \cdot 10^{-19}$. Las longitudes de onda siempre en metros (nm $= 10^{-9}$ m).</li>
+                <li><strong>La bala fotónica:</strong> $E_{incidente} = h\frac{c}{\lambda_{incidente}}$. Si $E_{incidente} < W_{ext}$, el metal no suelta electrones.</li>
+                <li><strong>Energía Cinética Máxima:</strong> Lo que sobra del peaje: $$ E_{c,max} = E_{incidente} - W_{ext} $$</li>
+                <li><strong>Potencial de Frenado ($V_f$):</strong> Voltaje adverso para frenar al electrón más rápido: $$ E_{c,max} = e \cdot V_{frenado} $$</li>
+            </ul>
+        </div>
+
+        <!-- Caso 2 -->
+        <div class="case-card">
+            <div class="quote-title">"Una muestra radiactiva ve reducida su masa o su actividad a una fracción en un tiempo T. Calcule el periodo de semidesintegración, la constante y la datación..."</div>
+            <div class="ebau-badges">
+                <span class="ebau-badge">Aplicación: Física Nuclear y Desintegración</span>
+            </div>
+            <ul class="resolution-steps">
+                <li><strong>Las tres constantes temporales:</strong> 
+                <br> $\lambda$ (Constante de desintegración en tiempo$^{-1}$)
+                <br> $T_{1/2}$ (Periodo de semidesintegración, masa a la mitad): $T_{1/2} = \frac{\ln(2)}{\lambda}$
+                <br> $\tau$ (Vida media): $\tau = 1/\lambda$.
+                </li>
+                <li><strong>Armar la exponencial (El truco del Logaritmo):</strong> Ley general: $M = M_0 \cdot e^{-\lambda t}$. Divide la masa final entre la inicial y toma Logaritmo Neperiano a ambos lados para despejar incógnitas del exponente: $$ \ln\left(\frac{M}{M_0}\right) = -\lambda t $$</li>
+                <li><strong>Becquerelios:</strong> Para la Actividad Física $A = \lambda \cdot N$ requerida en Becquerelios, $\lambda$ **debe** ir obligatoriamente en $s^{-1}$.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- SECCIÓN DE EJERCICIOS MODERNA -->
+    <div class="exercises-section">
+        <h2>Ejercicios Resueltos de Aplicación (Física Moderna)</h2>
+
+        <!-- Ejercicios Caso 1 -->
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 1 (Caso 1) - Extracción Fotoeléctrica</div>
+            <div class="ex-statement">
+                "El trabajo de extracción del Potasio es de 2,25 eV. Si se ilumina una superficie de Potasio con luz monocromática de longitud de onda 350 nm, calcule la energía cinética máxima de los fotoelectrones emitidos y el potencial de frenado."<br>
+                <i>Datos: $h = 6,63 \cdot 10^{-34} \text{ J s}$, $c = 3 \cdot 10^8 \text{ m/s}$, $e = 1,6 \cdot 10^{-19} \text{ C}$.</i>
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>Convertimos el trabajo de extracción a unidades del Sistema Internacional (Julios):</p>
+                <p>$$ W_{ext} = 2,25 \text{ eV} \cdot 1,6 \cdot 10^{-19} \text{ J/eV} = 3,6 \cdot 10^{-19} \text{ J} $$</p>
+                <p>Calculamos la energía del fotón incidente de la luz ($\lambda = 350 \cdot 10^{-9}$ m):</p>
+                <p>$$ E_{fotón} = h \frac{c}{\lambda} = 6,63 \cdot 10^{-34} \frac{3 \cdot 10^8}{350 \cdot 10^{-9}} = 5,68 \cdot 10^{-19} \text{ J} $$</p>
+                <p>Como $E_{fotón} > W_{ext}$, se produce efecto fotoeléctrico. Aplicamos la ecuación de Einstein para despejar la Energía Cinética Máxima de los electrones que escapan:</p>
+                <p>$$ E_{c,max} = E_{fotón} - W_{ext} = 5,68 \cdot 10^{-19} - 3,6 \cdot 10^{-19} = 2,08 \cdot 10^{-19} \text{ J} $$</p>
+                <p>Para frenarlos por completo necesitamos un potencial opuesto (potencial de frenado $V_f$):</p>
+                <p>$$ E_{c,max} = e \cdot V_f \implies V_f = \frac{2,08 \cdot 10^{-19}}{1,6 \cdot 10^{-19}} = 1,30 \text{ Voltios} $$</p>
+            </div>
+        </div>
+
+        <div class="exercise-box">
+            <div class="ex-title">Ejercicio 2 (Caso 2) - Datación y Cinética Radiactiva</div>
+            <div class="ex-statement">
+                "Una muestra de material radiactivo posee un periodo de semidesintegración de 15 días. Tras un determinado tiempo de observación, se comprueba que la masa de isótopos inestables se ha reducido a la décima parte ($10\%$) de su valor original. Calcule la constante de desintegración y el tiempo exacto transcurrido."
+            </div>
+            <div class="ex-resolution">
+                <h5>Resolución:</h5>
+                <p>La constante de desintegración radiactiva ($\lambda$) está vinculada directamente al periodo de semidesintegración. Podemos mantenerla en $\text{días}^{-1}$ por comodidad matemática, en lugar de pasarla a segundos.</p>
+                <p>$$ \lambda = \frac{\ln(2)}{T_{1/2}} = \frac{0,693}{15} \approx 0,0462 \text{ días}^{-1} $$</p>
+                <p>La muestra se ha reducido a la décima parte, por lo que la masa actual que queda viva ($m$) es el $10\%$ de la masa inicial ($m_0$):</p>
+                <p>$$ m = 0,1 \cdot m_0 $$</p>
+                <p>Utilizamos la Ley de Desintegración Radiactiva e inyectamos esta relación:</p>
+                <p>$$ m = m_0 \cdot e^{-\lambda t} \implies 0,1 \cdot m_0 = m_0 \cdot e^{-0,0462 \cdot t} $$</p>
+                <p>Se cancela la masa inicial $m_0$ en ambos lados. Aplicamos Logaritmo Neperiano ($\ln$) para extraer la incógnita $t$ del exponente negativo:</p>
+                <p>$$ \ln(0,1) = -0,0462 \cdot t \implies -2,302 = -0,0462 \cdot t $$</p>
+                <p>$$ t = \frac{-2,302}{-0,0462} = 49,8 \text{ días} $$</p>
+                <p>Han pasado casi 50 días para que quede una décima parte del material radiactivo.</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function openTab(evt, tabName) {
+        var i, tabcontent, tablinks;
+        // Ocultar todos los paneles
+        tabcontent = document.getElementsByClassName("tab-content");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+        // Desactivar todos los botones
+        tablinks = document.getElementsByClassName("tab-btn");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        // Mostrar el panel seleccionado activando el botón
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+    }
+</script>
+
+</body>
+</html>
+¿Cómo se aplica la Ley de Snell en fibra óptica?
+Explícame el balance de energía en órbitas elípticas
+¿Cuál es la diferencia entre masa inercial y gravitatoria?
